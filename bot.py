@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 # 🔹 CARGAR VARIABLES DE ENTORNO
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
+print("TOKEN:", TOKEN)
 
 CANAL_PROHIBIDO_ID = 1494972441628508200
 
