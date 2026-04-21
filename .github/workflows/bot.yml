@@ -1,4 +1,4 @@
-name: Run Discord Bot
+name: Run Discord Bots
 
 on:
   workflow_dispatch:
@@ -7,22 +7,26 @@ jobs:
   run-bot:
     runs-on: ubuntu-latest
 
+    # 🔐 VARIABLES GLOBALES (AQUÍ ESTÁ LA CLAVE)
+    env:
+      DISCORD_TOKEN_1: ${{ secrets.DISCORD_TOKEN_1 }}
+      DISCORD_TOKEN_2: ${{ secrets.DISCORD_TOKEN_2 }}
+
     steps:
-    - name: Clonar repo
+    - name: Clonar repositorio
       uses: actions/checkout@v4
 
     - name: Instalar Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
+
     - name: Instalar dependencias
       run: |
         pip install discord.py python-dotenv
-      - name: Ejecutar bot 1
-     run: python bot.py
-    env:
-     DISCORD_TOKEN_1: ${{ secrets.DISCORD_TOKEN_1 }}
-   - name: Ejecutar bot 2
-   run: python Bott.py
-   env:
-  DISCORD_TOKEN_2: ${{ secrets.DISCORD_TOKEN_2 }}
+
+    - name: Ejecutar bots
+      run: |
+        python bot.py &
+        python Bott.py &
+        wait
