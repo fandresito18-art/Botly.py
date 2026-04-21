@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 # 🔹 CARGAR VARIABLES
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
+print("TOKEN:", TOKEN)
 
 intents = discord.Intents.default()
 intents.message_content = True
