@@ -19,13 +19,12 @@ jobs:
     - name: Instalar dependencias
       run: |
         pip install discord.py python-dotenv
-        
-- name: Ejecutar bots
-  run: |
-    python bot.py &
-    python Bott.py &
-    wait
-  env:
-    DISCORD_TOKEN_1: ${{ secrets.DISCORD_TOKEN_1 }}
-    DISCORD_TOKEN_2: ${{ secrets.DISCORD_TOKEN_2 }}
 
+    - name: Ejecutar bots
+      run: |
+        python bot.py &
+        python Bott.py &
+        wait
+      env:
+        DISCORD_TOKEN_1: ${{ secrets.DISCORD_TOKEN_1 }}
+        DISCORD_TOKEN_2: ${{ secrets.DISCORD_TOKEN_2 }}
